@@ -1,0 +1,30 @@
+server:
+  port: ${port.code-task-app-batch}
+
+spring:
+  application:
+    name: code-task-app-batch
+  profiles:
+    active: local
+
+#logback-spring.xml 에서 프로젝트명으로 사용
+application:
+  project-name: code-task-app-batch
+
+logging:
+  path:
+    root: /var/log/code-task
+  file: ${logging.path.root}/${application.project-name}/${spring.application.name}.log
+
+---
+spring:
+  profiles: local
+  cloud:
+    config:
+      uri: http://localhost:8500
+
+logging:
+  path:
+    root: C:\project\logs\task
+
+---
