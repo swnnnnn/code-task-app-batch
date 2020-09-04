@@ -30,9 +30,8 @@ public class RankServiceImpl implements RankService {
     public void updateRank() {
         List<Object[]> rankDtoList = memberRepository.selectRankList();
         for(Object[] object : rankDtoList) {
-            Optional<Member> exist = memberRepository.findById((String)object[0]); // register
-            if (exist.isPresent()) {
-                Member member = exist.get();
+            Member member = memberRepository.findById((String)object[0]); // register
+            if (member != null) {
                 member.changeRank(Integer.valueOf(object[1].toString())); // rank
                 memberRepository.save(member);
             }
