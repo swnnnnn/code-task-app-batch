@@ -23,7 +23,7 @@ public class RankController {
 
     private final RankService rankService;
 
-    @Scheduled(cron = "* * 1 * * *") // 새벽1시
+    @Scheduled(cron = "0 0 01 * * *") // 새벽1시
     public void updateRank() throws Exception {
         rankService.updateRank();
     }
